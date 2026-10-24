@@ -1,0 +1,35 @@
+# Build output (make build / make build-rpm)
+build/
+dist/
+
+# Binary from a plain `go build` in the repo root
+/prometheus-inseego-exporter
+
+# Go test and profiling artifacts
+*.test
+*.out
+*.prof
+coverage.*
+
+# Local Go workspace files
+go.work
+go.work.sum
+
+# Local exporter config (may contain device addresses); config.example.yaml is tracked
+/config.yaml
+/config.local.yaml
+
+# Environment files
+.env
+.env.*
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
