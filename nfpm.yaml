@@ -1,0 +1,22 @@
+# nFPM packaging config, driven by environment variables set in the Makefile.
+name: prometheus-inseego-exporter
+arch: ${GOARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: default
+maintainer: Alain Lefebvre <alain.lefebvre@gmail.com>
+description: Prometheus exporter for Inseego MiFi devices (GPS over Wi-Fi NMEA stream and /srv/status device metrics).
+homepage: https://github.com/hartfordfive/prometheus-inseego-exporter
+license: MIT
+
+contents:
+  - src: build/rpm/prometheus-inseego-exporter
+    dst: /usr/bin/prometheus-inseego-exporter
+    file_info:
+      mode: 0755
+  - src: config.example.yaml
+    dst: /etc/prometheus-inseego-exporter/config.yaml
+    type: config|noreplace
+    file_info:
+      mode: 0644

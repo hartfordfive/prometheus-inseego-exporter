@@ -1,0 +1,38 @@
+# prometheus-inseego-exporter configuration.
+# Every key is optional; omitted keys use the defaults shown here.
+# Flags given on the command line override values from this file.
+
+web:
+  # Address to expose metrics on (-web.listen-address).
+  listen_address: "0.0.0.0:9877"
+  # Path under which to expose metrics (-web.telemetry-path).
+  telemetry_path: /metrics
+
+mifi:
+  # host:port of the MiFi "GPS over Wi-Fi" NMEA stream (-mifi.address).
+  address: my.mifi:11010
+  # Timeout when connecting to the NMEA stream (-mifi.dial-timeout).
+  dial_timeout: 5s
+  # Maximum time per GPS fetch to wait for RMC and GGA sentences (-mifi.read-timeout).
+  read_timeout: 10s
+
+gps:
+  # Interval between GPS fetches from the NMEA stream (-gps.interval).
+  interval: 30s
+  # Stop exporting fix metrics if no successful update for this long; must be
+  # longer than gps.interval, or 0 to disable (-gps.stale-after).
+  stale_after: 90s
+
+status:
+  # Export device metrics from the undocumented /srv/status JSON endpoint (-status.enabled).
+  enabled: true
+  # URL of the endpoint (-status.url).
+  url: http://my.mifi/srv/status
+  # Timeout when fetching the endpoint (-status.timeout).
+  timeout: 5s
+  # Interval between fetches of the endpoint (-status.interval).
+  interval: 30s
+
+log:
+  # Log level: debug, info, warn, error (-log.level).
+  level: info
